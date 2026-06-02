@@ -1,0 +1,37 @@
+art-books-museum-platform/
+│
+├── index.html
+├── README.md
+├── LICENSE
+├── .gitignore
+│
+├── assets/
+│   ├── images/
+│   ├── logos/
+│   ├── icons/
+│   └── backgrounds/
+│
+├── artworks/
+│
+├── books/
+│
+├── certificates/
+│   ├── ITMK/
+│   ├── MK/
+│   ├── IT/
+│   └── D/
+│
+├── qr/
+│
+├── presentations/
+│
+├── dashboard/
+│   └── index.html
+│
+├── verify/
+│   └── index.html
+│
+├── store/
+│   └── index.html
+│
+└── archive/
