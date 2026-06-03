@@ -1,114 +1,362 @@
 <!DOCTYPE html>
-<html lang="mk">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ART & BOOKS MUSEUM</title>
+<title>ART & BOOKS.w.c — PERSONAL MUSEUM</title>
 
 <style>
 body{
-margin:0;
-font-family:Arial;
-background:#0a0a10;
-color:white;
+  margin:0;
+  background:#070707;
+  color:#fff;
+  font-family:Arial;
 }
 
+/* HEADER */
 header{
-padding:60px 20px;
-text-align:center;
-border-bottom:1px solid #222;
+  padding:45px;
+  text-align:center;
+  font-size:28px;
+  letter-spacing:4px;
+  background:#111;
 }
 
-h1{
-margin:0;
-font-size:38px;
-letter-spacing:4px;
+/* SUBTITLE */
+.sub{
+  text-align:center;
+  color:#aaa;
+  margin-top:-20px;
+  margin-bottom:20px;
+  font-size:13px;
 }
 
-p{
-color:#888;
-margin-top:10px;
+/* SEARCH */
+input{
+  width:90%;
+  display:block;
+  margin:20px auto;
+  padding:12px;
+  border-radius:8px;
+  border:none;
 }
 
-nav{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:12px;
-padding:25px;
+/* SECTION TITLE */
+h2{
+  margin-left:20px;
+  border-left:4px solid #fff;
+  padding-left:10px;
 }
 
-nav a{
-padding:14px 20px;
-background:#1b1b2a;
-color:white;
-text-decoration:none;
-border-radius:10px;
-border:1px solid #2a2a3a;
-font-weight:bold;
+/* ART GRID */
+.grid{
+  columns:300px;
+  column-gap:15px;
+  padding:20px;
 }
 
-nav a:hover{
-border-color:#5555ff;
-transform:scale(1.05);
+/* CARD */
+.card{
+  background:#151515;
+  margin-bottom:15px;
+  border-radius:12px;
+  overflow:hidden;
+  break-inside:avoid;
+  transition:0.3s;
+  cursor:pointer;
 }
 
-.footer{
-text-align:center;
-padding:30px;
-color:#555;
-font-size:12px;
+.card:hover{
+  transform:scale(1.02);
+}
+
+.card img{
+  width:100%;
+  cursor:pointer;
+}
+
+/* TEXT BLOCK */
+.info{
+  padding:10px;
+}
+
+.code{
+  color:#9ad1ff;
+  font-weight:bold;
+  font-size:13px;
+}
+
+.title{
+  font-size:15px;
+  margin-top:5px;
+}
+
+.subtitle{
+  font-size:12px;
+  color:#aaa;
+}
+
+/* BUTTON */
+.btn{
+  display:block;
+  padding:10px;
+  margin:6px;
+  text-align:center;
+  background:#1a1a1a;
+  color:#fff;
+  text-decoration:none;
+  border-radius:8px;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:#333;
+}
+
+/* LIGHTBOX */
+#lightbox{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:999;
+}
+
+#lightbox img{
+  max-width:90%;
+  max-height:80%;
+  border-radius:10px;
+}
+
+#lightbox span{
+  margin-top:10px;
+  color:#ccc;
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+  position:absolute;
+  top:20px;
+  right:30px;
+  color:#ccc;
+  font-size:28px;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:1000;
+}
+
+.close-btn:hover{
+  color:#fff;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>ART & BOOKS MUSEUM</h1>
-<p>Digital Museum Platform • Nikolche Manasiev</p>
-</header>
+<header>ART & BOOKS.w.c</header>
+<div class="sub">Personal Museum • Archive System • MK / IT / ITMK / D Collection</div>
 
-<nav>
-<a href="gallery.html">Gallery</a>
-<a href="books.html">Books</a>
-<a href="store.html">Store</a>
-<a href="verify.html">Verify</a>
-<a href="dashboard.html">Dashboard</a>
-</nav>
+<input id="search" placeholder="Search ART / PAYMENTS / PROJECTS / APPS">
 
-<div class="footer">
-ITMK / MK / IT / D COLLECTION SYSTEM • 300+ ARTWORKS ACTIVE
+<!-- ART -->
+<h2>ART ARCHIVE</h2>
+<div class="grid" id="art"></div>
+
+<!-- PAYMENTS -->
+<h2>COLLECTION / PAYMENTS</h2>
+<div id="payments"></div>
+
+<!-- PROJECTS -->
+<h2>PROJECTS VAULT</h2>
+<div id="projects"></div>
+
+<!-- APPS -->
+<h2>SYSTEM LINKS</h2>
+<div id="apps"></div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox(event)">
+  <span class="close-btn" onclick="closeLightbox(event)">&times;</span>
+  <img id="lightbox-img" alt="">
+  <span id="lightbox-title"></span>
 </div>
 
-</body>
-</html>
-<header>
-<h1>ART & BOOKS MUSEUM</h1>
-<p>Digital Platform by Nikolche Manasiev</p>
-</header>
+<script>
 
-<nav>
-<a href="gallery.html">Gallery</a>
-<a href="books.html">Books</a>
-<a href="store.html">Store</a>
-<a href="verify.html">Verify</a>
-<a href="dashboard.html">Dashboard</a>
-</nav>
+/* =========================
+   PERSONAL ART ARCHIVE (YOUR STYLE)
+========================= */
 
-<div class="section">
+const ART = [
+  {
+    img:"images/mk241.jpg",
+    code:"ITMK241",
+    title:"Значење и Живот",
+    subtitle:"La Conoscenza e la Vita • Dual Language Archive",
+    series:"ITMK"
+  },
+  {
+    img:"images/it242.jpg",
+    code:"IT242",
+    title:"Spectrum of Existence",
+    subtitle:"Abstract Energy Field Composition",
+    series:"IT"
+  },
+  {
+    img:"images/frozen.jpg",
+    code:"IT243",
+    title:"Frozen Memory",
+    subtitle:"Time • Ice • Light Structure",
+    series:"IT"
+  },
+  {
+    img:"images/flowers.jpg",
+    code:"IT244",
+    title:"Flowers of Silence",
+    subtitle:"Nature Memory / Emotional Contrast",
+    series:"IT"
+  },
+  {
+    img:"images/d007.jpg",
+    code:"D007",
+    title:"DRACONIS CORE",
+    subtitle:"Dark Archive / Symbolic System",
+    series:"D"
+  }
+];
 
-<h2>Collections</h2>
+/* =========================
+   PLATFORM SYSTEM
+========================= */
 
-<div class="block">
-ITMK / MK / IT / D SYSTEM COLLECTIONS
-</div>
+const DATA = [
+  /* PAYMENTS */
+  "https://buy.stripe.com/9B65kE81Gd34gJTehNcjS0c",
+  "https://wise.com/pay/r/jPLz1Rs0VI8H-n0",
 
-<div class="block">
-ARTWORKS • BOOKS • CERTIFICATES • QR SYSTEM
-</div>
+  /* PROJECTS */
+  "https://github.com/Pr791610/art-books-sandbox-system",
+  "https://github.com/Pr791610/manasiev-art-books",
 
-</div>
+  /* APPS */
+  "https://art-books-cupon-valore.netlify.app",
+  "https://qr-art-certificate-system.netlify.app"
+];
+
+/* =========================
+   UTILITY FUNCTIONS
+========================= */
+
+function escapeHtml(text) {
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+/* =========================
+   RENDER ART
+========================= */
+
+function renderArt(){
+  const artDiv = document.getElementById("art");
+  artDiv.innerHTML = "";
+  
+  ART.forEach(a => {
+    const card = document.createElement("div");
+    card.className = "card";
+    
+    const img = document.createElement("img");
+    img.src = a.img;
+    img.alt = a.title;
+    img.onclick = () => openLightbox(a.img, a.title);
+    
+    const info = document.createElement("div");
+    info.className = "info";
+    info.innerHTML = `
+      <div class="code">N° ${escapeHtml(a.code)}</div>
+      <div class="title">${escapeHtml(a.title)}</div>
+      <div class="subtitle">${escapeHtml(a.subtitle)}</div>
+    `;
+    
+    card.appendChild(img);
+    card.appendChild(info);
+    artDiv.appendChild(card);
+  });
+}
+renderArt();
+
+/* =========================
+   PLATFORM ENGINE
+========================= */
+
+function renderPlatform(filter = ""){
+  const payments = document.getElementById("payments");
+  const projects = document.getElementById("projects");
+  const apps = document.getElementById("apps");
+  
+  payments.innerHTML = "";
+  projects.innerHTML = "";
+  apps.innerHTML = "";
+
+  DATA
+    .filter(u => u.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(url => {
+      let btn = document.createElement("a");
+      btn.className = "btn";
+      btn.href = url;
+      btn.target = "_blank";
+      btn.rel = "noopener noreferrer";
+
+      if(url.includes("stripe") || url.includes("wise")){
+        btn.textContent = "💳 Payment System";
+        payments.appendChild(btn);
+      }
+      else if(url.includes("github")){
+        btn.textContent = "🧠 Repository";
+        projects.appendChild(btn);
+      }
+      else{
+        btn.textContent = "🔗 Open System";
+        apps.appendChild(btn);
+      }
+    });
+}
+renderPlatform();
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+function openLightbox(img, title){
+  document.getElementById("lightbox").style.display = "flex";
+  document.getElementById("lightbox-img").src = img;
+  document.getElementById("lightbox-title").textContent = title;
+}
+
+function closeLightbox(event){
+  if(event.target.id === "lightbox" || event.target.classList.contains("close-btn")){
+    document.getElementById("lightbox").style.display = "none";
+  }
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+document.getElementById("search").addEventListener("input", e => {
+  renderPlatform(e.target.value);
+});
+
+</script>
 
 </body>
 </html>
