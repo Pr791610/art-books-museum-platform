@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<style>
+body{background:#0a0a10;color:white;font-family:Arial;text-align:center;padding:30px}
+a{display:block;margin:10px;padding:12px;background:#1b1b2a;color:white;text-decoration:none;border-radius:10px}
+</style>
+</head>
+
+<body>
+
+<h2>CONTROL CENTER</h2>
+
+<a href="https://github.com">GitHub</a>
+<a href="https://netlify.com">Netlify</a>
+<a href="https://canva.com">Canva</a>
+<a href="https://mail.google.com">Gmail</a>
+
+</body>
+</html>
