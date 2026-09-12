@@ -397,7 +397,101 @@ document.getElementById("search").addEventListener("input", e => {
 }
 </style>
 
-<a href="index.html" class="hub-button">
+<a href="<!doctype html>
+<html lang="mk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080604">
+<meta name="description" content="ALT3 PRO — цркви и манастири во Македонија со GPS и карта">
+<title>ALT3 PRO — Цркви и Манастири Македонија</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<style>
+:root{--bg:#080604;--bg2:#120b06;--panel:#17100a;--panel2:#21170b;--gold:#d6ad50;--gold2:#f3d98b;--gold3:#8f6a26;--cream:#f7edd0;--muted:#b9ad91;--line:#5d451b;--danger:#c98b72;--ok:#a9c88c}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,#4a230e 0,#180d07 28%,#080604 65%);color:var(--cream);font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.08;background-image:linear-gradient(45deg,#fff 1px,transparent 1px),linear-gradient(-45deg,#fff 1px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(to bottom,black,transparent 65%)}
+header{position:sticky;top:0;z-index:2000;padding:13px 12px 11px;text-align:center;background:rgba(8,6,4,.96);border-bottom:1px solid var(--gold3);box-shadow:0 5px 20px #000}
+.orn{color:var(--gold);font-size:12px;letter-spacing:5px}.title{margin:3px 0;color:var(--gold2);font-size:clamp(18px,5vw,28px);letter-spacing:.8px;text-shadow:0 1px 10px #000}.sub{color:var(--muted);font-size:11px}
+.wrap{max-width:1250px;margin:auto}.toolbar{padding:12px;background:linear-gradient(180deg,#120b06,#0b0805);border-bottom:1px solid #3f2d13}.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px}.input,.select,.btn{width:100%;min-height:44px;border:1px solid var(--line);border-radius:9px;background:#120f0b;color:var(--cream);padding:9px 11px;font:inherit;outline:none}.input:focus,.select:focus{border-color:var(--gold);box-shadow:0 0 0 2px #d6ad5020}.btn{background:linear-gradient(145deg,#4a3514,#1b1207);color:var(--gold2);font-weight:bold;cursor:pointer}.btn:active{transform:translateY(1px)}.buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.stats{display:flex;flex-wrap:wrap;gap:8px;padding:9px 12px;color:var(--gold2);font-size:12px;border-bottom:1px solid #342510}.pill{border:1px solid #4d3918;border-radius:99px;padding:5px 9px;background:#120e09}.status{padding:8px 12px;color:var(--muted);font-size:12px;min-height:32px}
+#map{height:min(62vh,650px);min-height:360px;border-top:1px solid var(--gold3);border-bottom:1px solid var(--gold3);background:#17130d}.leaflet-container{font-family:Georgia,'Times New Roman',serif;background:#ddd}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#17100a;color:var(--cream);border:1px solid var(--gold3)}.leaflet-popup-content{margin:12px}.leaflet-popup-content a{color:var(--gold2)}
+.content{padding:12px}.section-title{color:var(--gold2);font-size:18px;margin:4px 0 10px}.list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.card{position:relative;border:1px solid var(--line);border-radius:12px;padding:12px;background:linear-gradient(145deg,rgba(35,24,11,.96),rgba(13,10,7,.96));box-shadow:0 5px 18px #0007}.card:hover{border-color:var(--gold)}.name{padding-right:35px;color:var(--gold2);font-weight:bold;font-size:17px;line-height:1.25}.meta{color:var(--muted);font-size:12px;margin:5px 0}.gps{font-family:monospace;color:#d8c48d;font-size:12px;word-break:break-all}.actions{display:grid;grid-template-columns:1fr 1fr 42px;gap:6px;margin-top:9px}.a{display:flex;align-items:center;justify-content:center;min-height:38px;text-decoration:none;border:1px solid #5b431b;border-radius:8px;background:#171007;color:var(--gold2);font-size:12px}.a:hover{border-color:var(--gold);background:#241708}.fav{position:absolute;right:10px;top:9px;border:0;background:none;color:#80642b;font-size:25px;cursor:pointer}.fav.on{color:#ffd75a;text-shadow:0 0 8px #ffd75a66}.empty{padding:30px 10px;text-align:center;color:var(--muted);border:1px dashed #4d3918;border-radius:10px}
+footer{text-align:center;padding:20px 12px 30px;color:#7d745f;font-size:11px;border-top:1px solid #30230f}.modal{display:none;position:fixed;inset:0;z-index:4000;background:#000b;align-items:center;justify-content:center;padding:16px}.modal.open{display:flex}.dialog{width:min(680px,100%);max-height:90vh;overflow:auto;background:linear-gradient(145deg,#251708,#0d0905);border:1px solid var(--gold3);border-radius:14px;padding:18px;box-shadow:0 20px 60px #000}.close{float:right;background:none;border:1px solid #62491d;color:var(--gold2);border-radius:7px;padding:6px 10px}.detail h2{color:var(--gold2);font-size:22px;margin:4px 0 10px}.detail p{color:var(--muted);line-height:1.55}.detail .biggps{font-family:monospace;color:var(--gold2);font-size:15px}.detaillinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr 1fr}.grid .input{grid-column:1/-1}.buttons{grid-template-columns:1fr 1fr}.list{grid-template-columns:1fr}#map{height:52vh;min-height:340px}.content{padding:10px}.actions{grid-template-columns:1fr 1fr 40px}}
+@media(min-width:1100px){.content{padding:18px 0}.toolbar{border:1px solid #342510;border-radius:12px;margin:12px auto;max-width:1250px}.stats,.status{max-width:1250px;margin:auto}.list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header><div class="orn">✦ ✦ ✦</div><div class="title">⛪ ALT3 PRO — ЦРКВИ И МАНАСТИРИ</div><div class="sub">МАКЕДОНИЈА • GPS • КАРТА • ПРЕБАРУВАЊЕ • ОМИЛЕНИ</div></header>
+<main class="wrap">
+<section class="toolbar">
+<div class="grid">
+<input id="search" class="input" autocomplete="off" placeholder="🔎 Пребарај име, место или објект...">
+<select id="type" class="select"><option value="all">⛪ Сите објекти</option><option value="monastery">☦ Манастири</option><option value="church">✝ Цркви</option></select>
+<select id="region" class="select"><option value="all">🗺 Сите региони</option></select>
+</div>
+<div class="buttons">
+<button class="btn" id="locate">📍 Моја локација</button><button class="btn" id="near">🎯 Најблиски</button><button class="btn" id="allmap">🗺 Сите на карта</button><button class="btn" id="reset">↺ Ресет</button>
+</div>
+</section>
+<div class="stats"><span class="pill" id="count">0 записи</span><span class="pill" id="favcount">☆ 0 омилени</span><span class="pill" id="source">Извор: подготовка</span></div>
+<div id="status" class="status">Вчитување на GPS податоците...</div>
+<div id="map"></div>
+<section class="content"><div class="section-title">⛪ Регистар</div><div id="list" class="list"></div></section>
+</main>
+<footer>ALT3 PRO • Јавни GIS податоци + OpenStreetMap • GPS точноста може да варира. Проверете ја локацијата пред патување.</footer>
+<div id="modal" class="modal"><div class="dialog"><button id="close" class="close">✕ Затвори</button><div id="detail" class="detail"></div></div></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+'use strict';
+const GIS='https://gisportal.gdi.mk/arcgis/rest/services/WAB/POI/MapServer/968/query';
+const PAGE=1000;
+const FALLBACK=[
+['Св. Климент и Пантелејмон — Плаошник',41.1127361,20.7912444,'Охрид','monastery'],
+['Св. Наум Охридски',40.91389,20.74056,'Охрид','monastery'],
+['Св. Јован Крстител — Бигорски',41.62194,20.61167,'Дебар','monastery'],
+['Св. Пантелејмон — Горно Нерези',41.977,21.374,'Скопје','monastery'],
+['Успение на Пресвета Богородица — Матка',41.9618,21.296,'Скопје','monastery'],
+['Св. Никола Шишевски — Матка',41.9518,21.3042,'Скопје','monastery'],
+['Лесновски манастир',42.0133,22.2284,'Кочани','monastery'],
+['Св. Јоаким Осоговски',42.2083,22.3638,'Крива Паланка','monastery'],
+['Св. Ѓорѓи — Старо Нагоричане',42.1555,22.2121,'Куманово','church'],
+['Трескавец',41.4038,21.5382,'Прилеп','monastery'],
+['Зрзе',41.52111,21.34167,'Прилеп','monastery'],
+['Сливница',40.9781,21.1004,'Преспа','monastery']
+];
+let all=[],markers=[],userMarker=null,nearMode=false;
+const map=L.map('map',{zoomControl:true,preferCanvas:true}).setView([41.6086,21.7453],8);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(map);
+const $=id=>document.getElementById(id);
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+function classify(n){const x=(n||'').toLowerCase();const keys=['манастир','манастири','monastery','monastir','плаошник','бигорски','лесновски','осоговски','трескавец','зрзе','матка','шишевски','сливница','свети наум','велјуса','водоча','пречиста','слепче','рајчица','карпински','свети спас','св. спас'];return keys.some(k=>x.includes(k))?'monastery':'church';}
+function regionFromName(n){const x=(n||'').toLowerCase();const m=[['Скопје','скопје|нерези|матка|шишево|кучевиште|љубанци|банјани|чардак'],['Охрид','охрид|плаошник|канео|заум|велгошти|еразмо|наум'],['Струга','струга|калишта|вевчани'],['Дебар','дебар|рајчица|бигорски|ростуше'],['Прилеп','прилеп|трескавец|зрзе|слепче'],['Битола','битола|преспа|новачки|црнец'],['Штип','штип'],['Кочани','кочани|лесново|злетово'],['Радовиш','радовиш|ораовица'],['Струмица','струмица|велјуса|водоча|банско|дојран'],['Куманово','куманово|нагоричане|карпино'],['Крива Паланка','осогово|осоговски'],['Тетово','тетово|лешок'],['Гостивар','гостивар'],['Велес','велес|теово'],['Кавадарци','кавадарци'],['Неготино','неготино'],['Валандово','валандово'],['Гевгелија','гевгелија'],['Богданци','богданци']];for(const [r,p] of m)if(new RegExp(p,'i').test(x))return r;return 'Останато';}
+function favs(){try{return JSON.parse(localStorage.getItem('alt3-favs')||'[]')}catch(e){return[]}}
+function isFav(id){return favs().includes(String(id))}
+function toggleFav(id){let a=favs(),s=String(id);a=a.includes(s)?a.filter(x=>x!==s):a.concat(s);localStorage.setItem('alt3-favs',JSON.stringify(a));render();}
+function dist(a,b,c,d){const R=6371,rad=Math.PI/180;const p1=a*rad,p2=c*rad,dp=(c-a)*rad,dq=(d-b)*rad;const q=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dq/2)**2;return R*2*Math.atan2(Math.sqrt(q),Math.sqrt(1-q));}
+async function getPage(offset){const p=new URLSearchParams({where:"tip='Цркви и манастири'",outFields:'objectid,ime,tip',returnGeometry:'true',outSR:'4326',f:'json',resultOffset:String(offset),resultRecordCount:String(PAGE),orderByFields:'objectid ASC'});const r=await fetch(GIS+'?'+p,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const d=await r.json();if(d.error)throw new Error(d.error.message||'GIS error');return d;}
+async function loadGIS(){let offset=0,seen=new Set();while(true){$('status').textContent='Вчитување GPS точки… '+all.length;const d=await getPage(offset),fs=d.features||[];if(!fs.length)break;for(const f of fs){const a=f.attributes||{},g=f.geometry||{},lat=Number(g.y),lon=Number(g.x);if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;const id=String(a.objectid??(a.ime+'|'+lat+'|'+lon));if(seen.has(id))continue;seen.add(id);all.push({id,name:a.ime||'Без име',lat,lon,region:regionFromName(a.ime),type:classify(a.ime),source:'GDi GIS'});}if(fs.length<PAGE||d.exceededTransferLimit===false)break;offset+=PAGE;if(offset>200000)break;}return all.length;}
+function useFallback(){all=FALLBACK.map((x,i)=>({id:'fb'+i,name:x[0],lat:x[1],lon:x[2],region:x[3],type:x[4],source:'ALT3 PRO fallback'}));}
+function addRegions(){const s=$('region');s.innerHTML='<option value="all">🗺 Сите региони</option>';[...new Set(all.map(x=>x.region))].sort((a,b)=>a.localeCompare(b,'mk')).forEach(r=>{const o=document.createElement('option');o.value=r;o.textContent=r;s.appendChild(o);});}
+function filtered(){const q=$('search').value.trim().toLowerCase(),ty=$('type').value,rg=$('region').value;let rows=all.filter(x=>(!q||x.name.toLowerCase().includes(q)||x.region.toLowerCase().includes(q))&&(ty==='all'||x.type===ty)&&(rg==='all'||x.region===rg));if(nearMode&&window._userPos)rows.sort((a,b)=>dist(window._userPos.lat,window._userPos.lon,a.lat,a.lon)-dist(window._userPos.lat,window._userPos.lon,b.lat,b.lon));return rows;}
+function markerPopup(x){return '<b>'+esc(x.name)+'</b><br>'+ (x.type==='monastery'?'☦ Манастир':'✝ Црква')+' • '+esc(x.region)+'<br><code>'+x.lat.toFixed(6)+', '+x.lon.toFixed(6)+'</code><br><a target="_blank" rel="noopener" href="https://www.google.com/maps?q='+x.lat+','+x.lon+'">📍 Google Maps</a> · <a target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat='+x.lat+'&mlon='+x.lon+'#map=17/'+x.lat+'/'+x.lon+'">🗺 OSM</a>'}
+function render(){const rows=filtered();markers.forEach(m=>map.removeLayer(m));markers=[];rows.forEach(x=>{const m=L.marker([x.lat,x.lon]).addTo(map).bindPopup(markerPopup(x));m.on('dblclick',()=>openDetail(x));markers.push(m);});$('count').textContent=rows.length+' записи';$('favcount').textContent='☆ '+favs().filter(id=>all.some(x=>String(x.id)===id)).length+' омилени';$('source').textContent='Извор: '+(all.length&&all[0].source==='GDi GIS'?'GDi GIS':'ALT3 fallback');$('list').innerHTML=rows.map(x=>{const f=isFav(x.id);return '<article class="card"><button class="fav '+(f?'on':'')+'" aria-label="Омилено" onclick="toggleFav(\''+esc(x.id)+'\')">'+(f?'★':'☆')+'</button><div class="name">'+esc(x.name)+'</div><div class="meta">'+(x.type==='monastery'?'☦ Манастир':'✝ Црква')+' • '+esc(x.region)+'</div><div class="gps">'+x.lat.toFixed(6)+', '+x.lon.toFixed(6)+'</div><div class="actions"><a class="a" target="_blank" rel="noopener" href="https://www.google.com/maps?q='+x.lat+','+x.lon+'">📍 Maps</a><a class="a" href="#" onclick="openDetailById(\''+esc(x.id)+'\');return false">ℹ Детали</a><a class="a" href="#" onclick="copyGPS('+x.lat+','+x.lon+');return false">⧉</a></div></article>';}).join('')||'<div class="empty">Нема пронајдени резултати.</div>';}
+function openDetailById(id){const x=all.find(y=>String(y.id)===String(id));if(x)openDetail(x)}
+function openDetail(x){$('detail').innerHTML='<h2>'+esc(x.name)+'</h2><p><b>Тип:</b> '+(x.type==='monastery'?'Манастир':'Црква')+'<br><b>Регион:</b> '+esc(x.region)+'<br><b>Извор:</b> '+esc(x.source)+'</p><div class="biggps">GPS: '+x.lat.toFixed(6)+', '+x.lon.toFixed(6)+'</div><div class="detaillinks"><a class="a" target="_blank" rel="noopener" href="https://www.google.com/maps?q='+x.lat+','+x.lon+'">📍 Отвори Google Maps</a><a class="a" target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat='+x.lat+'&mlon='+x.lon+'#map=17/'+x.lat+'/'+x.lon+'">🗺 OpenStreetMap</a><button class="btn" onclick="copyGPS('+x.lat+','+x.lon+')">⧉ Копирај GPS</button><button class="btn" onclick="toggleFav(\''+esc(x.id)+'\');openDetailById(\''+esc(x.id)+'\')">'+(isFav(x.id)?'★ Отстрани омилено':'☆ Додај омилено')+'</button></div>';$('modal').classList.add('open');}
+function copyGPS(lat,lon){const t=lat.toFixed(6)+', '+lon.toFixed(6);if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>{$('status').textContent='GPS копирано: '+t}).catch(()=>prompt('Копирај GPS:',t));else prompt('Копирај GPS:',t);}
+function fitRows(rows){if(!rows.length)return;const b=L.latLngBounds(rows.map(x=>[x.lat,x.lon]));map.fitBounds(b.pad(.08));}
+$('search').addEventListener('input',()=>{nearMode=false;render()});$('type').addEventListener('change',()=>{nearMode=false;render()});$('region').addEventListener('change',()=>{nearMode=false;render()});
+$('reset').onclick=()=>{$('search').value='';$('type').value='all';$('region').value='all';nearMode=false;window._userPos=null;map.setView([41.6086,21.7453],8);render();};
+$('allmap').onclick=()=>{nearMode=false;render();fitRows(filtered());$('map').scrollIntoView({behavior:'smooth'});};
+$('locate').onclick=()=>{if(!navigator.geolocation){alert('GPS не е поддржан во овој прелистувач.');return}navigator.geolocation.getCurrentPosition(p=>{window._userPos={lat:p.coords.latitude,lon:p.coords.longitude};if(userMarker)map.removeLayer(userMarker);userMarker=L.marker([p.coords.latitude,p.coords.longitude]).addTo(map).bindPopup('📍 Моја локација').openPopup();map.setView([p.coords.latitude,p.coords.longitude],14);$('status').textContent='Вашата локација е пронајдена.';},()=>alert('Дозволете Location/GPS во прелистувачот.'));};
+$('near').onclick=()=>{if(!window._userPos){alert('Прво притиснете „Моја локација“.');return}nearMode=true;render();fitRows(filtered().slice(0,20));$('status').textContent='Прикажани се најблиските објекти.';};
+$('close').onclick=()=>$('modal').classList.remove('open');$('modal').onclick=e=>{if(e.target.id==='modal')$('modal').classList.remove('open')};
+(async()=>{try{const n=await loadGIS();if(!n)throw new Error('Нема записи');$('status').textContent='✓ Готово — '+all.length+' GPS записи се вчитани.';}catch(e){console.warn(e);useFallback();$('status').textContent='⚠ GDi GIS не одговори. Прикажани се вградените ALT3 PRO точки.';}addRegions();render();})();
+</script>
+</body>
+</html>" class="hub-button">
   <span style="font-size:30px;">⛪</span>
   <span>ЦРКВИ И МАНАСТИРИ</span>
   <small>МАКЕДОНИЈА • GPS • МАПА</small>
