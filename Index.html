@@ -397,13 +397,14 @@ document.getElementById("search").addEventListener("input", e => {
 }
 </style>
 
-<a href="<!doctype html>
+<a href="
+  <!doctype html>
 <html lang="mk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#080604">
-<meta name="description" content="ALT3 PRO — цркви и манастири во Македонија со GPS и карта">
+<meta name="description" content="цркви и манастири во Македонија со GPS и карта">
 <title>Цркви и Манастири Македонија</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
 <style>
@@ -439,7 +440,7 @@ footer{text-align:center;padding:20px 12px 30px;color:#7d745f;font-size:11px;bor
 <div id="map"></div>
 <section class="content"><div class="section-title">⛪ Регистар</div><div id="list" class="list"></div></section>
 </main>
-<footer>ALT3 PRO • Јавни GIS податоци + OpenStreetMap • GPS точноста може да варира. Проверете ја локацијата пред патување.</footer>
+<footer> • Јавни GIS податоци + OpenStreetMap • GPS точноста може да варира. Проверете ја локацијата пред патување.</footer>
 <div id="modal" class="modal"><div class="dialog"><button id="close" class="close">✕ Затвори</button><div id="detail" class="detail"></div></div></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
@@ -459,6 +460,17 @@ const FALLBACK=[
 ['Трескавец',41.4038,21.5382,'Прилеп','monastery'],
 ['Зрзе',41.52111,21.34167,'Прилеп','monastery'],
 ['Сливница',40.9781,21.1004,'Преспа','monastery']
+['Бигорски Манастир',41.6206,20.6096,'Ростуше','monastery'],
+['Манастир Успение на Пресвета Богородица – Матка',41.9618,21.2960,'Матка','monastery'],
+['Осоговски Манастир',42.2083,22.3638,'Крива Паланка','monastery'],
+['Лесновски Манастир',42.0133,22.2284,'Лесново','monastery'],
+['Трескавец',41.4038,21.5382,'Прилеп','monastery'],
+['Сливнички Манастир',40.9781,21.1004,'Сливница','monastery'],
+['Шишевски Манастир',41.9518,21.3042,'Шишево','monastery'],['Карпински Манастир',42.1745,21.9934,'Сув Ора','monastery'],
+['Манастир Свети Ѓорѓи – Кнежино',41.5163,20.9218,'Кнежино','monastery'],
+['Нов Лешочки Манастир',42.0670,21.0280,'Лешок','monastery'],
+['Манастир Свети Наум',41.0970,20.8000,'Охрид','monastery'],
+['Плаошник – Св. Климент и Пантелејмон',41.1124,20.7909,'Охрид','monastery']
 
 ]; 
   
@@ -475,7 +487,7 @@ function toggleFav(id){let a=favs(),s=String(id);a=a.includes(s)?a.filter(x=>x!=
 function dist(a,b,c,d){const R=6371,rad=Math.PI/180;const p1=a*rad,p2=c*rad,dp=(c-a)*rad,dq=(d-b)*rad;const q=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dq/2)**2;return R*2*Math.atan2(Math.sqrt(q),Math.sqrt(1-q));}
 async function getPage(offset){const p=new URLSearchParams({where:"tip='Цркви и манастири'",outFields:'objectid,ime,tip',returnGeometry:'true',outSR:'4326',f:'json',resultOffset:String(offset),resultRecordCount:String(PAGE),orderByFields:'objectid ASC'});const r=await fetch(GIS+'?'+p,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const d=await r.json();if(d.error)throw new Error(d.error.message||'GIS error');return d;}
 async function loadGIS(){let offset=0,seen=new Set();while(true){$('status').textContent='Вчитување GPS точки… '+all.length;const d=await getPage(offset),fs=d.features||[];if(!fs.length)break;for(const f of fs){const a=f.attributes||{},g=f.geometry||{},lat=Number(g.y),lon=Number(g.x);if(!Number.isFinite(lat)||!Number.isFinite(lon))continue;const id=String(a.objectid??(a.ime+'|'+lat+'|'+lon));if(seen.has(id))continue;seen.add(id);all.push({id,name:a.ime||'Без име',lat,lon,region:regionFromName(a.ime),type:classify(a.ime),source:'GDi GIS'});}if(fs.length<PAGE||d.exceededTransferLimit===false)break;offset+=PAGE;if(offset>200000)break;}return all.length;}
-function useFallback(){all=FALLBACK.map((x,i)=>({id:'fb'+i,name:x[0],lat:x[1],lon:x[2],region:x[3],type:x[4],source:'ALT3 PRO fallback'}));}
+function useFallback(){all=FALLBACK.map((x,i)=>({id:'fb'+i,name:x[0],lat:x[1],lon:x[2],region:x[3],type:x[4],source:'PRO fallback'}));}
 function addRegions(){const s=$('region');s.innerHTML='<option value="all">🗺 Сите региони</option>';[...new Set(all.map(x=>x.region))].sort((a,b)=>a.localeCompare(b,'mk')).forEach(r=>{const o=document.createElement('option');o.value=r;o.textContent=r;s.appendChild(o);});}
 function filtered(){const q=$('search').value.trim().toLowerCase(),ty=$('type').value,rg=$('region').value;let rows=all.filter(x=>(!q||x.name.toLowerCase().includes(q)||x.region.toLowerCase().includes(q))&&(ty==='all'||x.type===ty)&&(rg==='all'||x.region===rg));if(nearMode&&window._userPos)rows.sort((a,b)=>dist(window._userPos.lat,window._userPos.lon,a.lat,a.lon)-dist(window._userPos.lat,window._userPos.lon,b.lat,b.lon));return rows;}
 function markerPopup(x){return '<b>'+esc(x.name)+'</b><br>'+ (x.type==='monastery'?'☦ Манастир':'✝ Црква')+' • '+esc(x.region)+'<br><code>'+x.lat.toFixed(6)+', '+x.lon.toFixed(6)+'</code><br><a target="_blank" rel="noopener" href="https://www.google.com/maps?q='+x.lat+','+x.lon+'">📍 Google Maps</a> · <a target="_blank" rel="noopener" href="https://www.openstreetmap.org/?mlat='+x.lat+'&mlon='+x.lon+'#map=17/'+x.lat+'/'+x.lon+'">🗺 OSM</a>'}
@@ -490,7 +502,7 @@ $('allmap').onclick=()=>{nearMode=false;render();fitRows(filtered());$('map').sc
 $('locate').onclick=()=>{if(!navigator.geolocation){alert('GPS не е поддржан во овој прелистувач.');return}navigator.geolocation.getCurrentPosition(p=>{window._userPos={lat:p.coords.latitude,lon:p.coords.longitude};if(userMarker)map.removeLayer(userMarker);userMarker=L.marker([p.coords.latitude,p.coords.longitude]).addTo(map).bindPopup('📍 Моја локација').openPopup();map.setView([p.coords.latitude,p.coords.longitude],14);$('status').textContent='Вашата локација е пронајдена.';},()=>alert('Дозволете Location/GPS во прелистувачот.'));};
 $('near').onclick=()=>{if(!window._userPos){alert('Прво притиснете „Моја локација“.');return}nearMode=true;render();fitRows(filtered().slice(0,20));$('status').textContent='Прикажани се најблиските објекти.';};
 $('close').onclick=()=>$('modal').classList.remove('open');$('modal').onclick=e=>{if(e.target.id==='modal')$('modal').classList.remove('open')};
-(async()=>{try{const n=await loadGIS();if(!n)throw new Error('Нема записи');$('status').textContent='✓ Готово — '+all.length+' GPS записи се вчитани.';}catch(e){console.warn(e);useFallback();$('status').textContent='⚠ GDi GIS не одговори. Прикажани се вградените ALT3 PRO точки.';}addRegions();render();})();
+(async()=>{try{const n=await loadGIS();if(!n)throw new Error('Нема записи');$('status').textContent='✓ Готово — '+all.length+' GPS записи се вчитани.';}catch(e){console.warn(e);useFallback();$('status').textContent='⚠ GDi GIS не одговори. Прикажани се вградените PRO точки.';}addRegions();render();})();
 </script>
 </body>
 </html>
