@@ -491,10 +491,7 @@ $('close').onclick=()=>$('modal').classList.remove('open');$('modal').onclick=e=
 (async()=>{try{const n=await loadGIS();if(!n)throw new Error('Нема записи');$('status').textContent='✓ Готово — '+all.length+' GPS записи се вчитани.';}catch(e){console.warn(e);useFallback();$('status').textContent='⚠ GDi GIS не одговори. Прикажани се вградените ALT3 PRO точки.';}addRegions();render();})();
 </script>
 </body>
-</html>" class="hub-button">
-  <span style="font-size:30px;">⛪</span>
-  <span>ЦРКВИ И МАНАСТИРИ</span>
-  <small>МАКЕДОНИЈА • GPS • МАПА</small>
+
 </a>
 </div>
 
